@@ -347,7 +347,7 @@ export const Reviews = ()=>{
 
     {reviewsArray.map((reviewsRow)=>{
 
-return <Splide extensions={{AutoScroll}} options={{autoScroll:{speed:2},perPage:1,pagination:false,arrows:false,type:'loop',gap:'1rem',fixedWidth:300,}} hasTrack={false} className='h-full'>
+return <Splide extensions={{AutoScroll}} options={{autoScroll:{speed:1},perPage:1,pagination:false,pauseOnHover:false,arrows:false,type:'loop',gap:'1rem',fixedWidth:300,}} hasTrack={false} className='h-full'>
     <SplideTrack className='h-full w-full '>
 
 {reviewsRow.map(eachReview=>{
