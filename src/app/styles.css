@@ -1,0 +1,23 @@
+.strokeClass{
+
+    
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #d6fb41;
+  
+    
+}
+
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hideScrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hideScrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  

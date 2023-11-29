@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+ 
+    
+    .commonFlex {
+        @apply flex justify-center items-center
+    }
+
+    .imageCommon{
+        @apply w-full h-full max-w-full object-cover
+    }
+
+    .hideOnDesktop{
+      @apply block lg:hidden
+    }
+
+    .hideOnMobile{
+      @apply hidden lg:block
+    }
+
+    .responsivePadding{
+
+      @apply px-mobile md:px-largerMobile 
+
+    }
+
+
+  }
