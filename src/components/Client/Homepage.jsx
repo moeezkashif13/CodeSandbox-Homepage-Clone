@@ -4,20 +4,25 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import localFont from 'next/font/local'
 
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 
+const twkeveret = localFont({ src: '../../../public/fonts/twkeveret-medium.otf' })
+
+
 import "@splidejs/react-splide/css";
 
-const str = "Instantdevenvironments";
+const str = "Instant dev environments";
 const splitted = str.split("");
 
 const container = {
-  hidden: { opacity: 0 },
+  hidden: { opacity:1 },
   show: {
     opacity: 1,
     transition: {
-      duration: 3,
+      // delay:1,
+      duration: 5,
       // staggerChildren: 0.03
     },
   },
@@ -27,22 +32,25 @@ const item = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-
-    // color : '#d6fb41',
+    delay:1,
+    duration:5,
+    color : '#d6fb41',
   },
 };
 
 export const HeroSectText = () => {
   return (
-    <div className="  px-8 py-8">
+    <div className="lg:max-w-[900px]  lg:mx-auto lg:flex lg:items-center">
+    <div className="  px-8 py-8   ">
+
       {/* text-[#d6fb41] */}
       <motion.div
-        className="flex text-5xl py-6  font-medium flex-wrap "
+        className={`flex lg:max-w-[630px] -tracking-[0.06em]  text-5xl md:text-[64px] py-6 lg:pt-[152px] lg:text-[115px] lg:leading-[110px]  font-semibold flex-wrap `}
         variants={container}
         initial="hidden"
         animate="show"
       >
-        {splitted.map((eachCharacter) => {
+        {/* {splitted.map((eachCharacter) => {
           return eachCharacter !== " " ? (
             <motion.p variants={item} className=" text-transparent strokeClass">
               {eachCharacter}
@@ -50,20 +58,45 @@ export const HeroSectText = () => {
           ) : (
             <p></p>
           );
-        })}
+        })} */}
+
+<motion.p variants={item} className=" text-transparent strokeClass">I</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">n</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">s</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">t</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">a</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">n</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">t</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">&nbsp;</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">d</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">e</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">v</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">&nbsp;</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">e</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">v</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">i</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">r</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">o</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">n</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">m</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">e</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">n</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">t</motion.p>
+<motion.p variants={item} className=" text-transparent strokeClass">s</motion.p>
+
       </motion.div>
 
-      <div></div>
 
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 2 }}
-        className="text-[#f0f0f0] text-[21px] "
+        transition={{ delay: 1, duration: 1 }}
+        className="text-[#f0f0f0]  md:mb-16 text-[21px] lg:text-[32px] lg:leading-10 "
       >
         CodeSandbox keeps you in flow by giving you cloud development
         environments that resume in 1 second.
       </motion.p>
+    </div>
     </div>
   );
 };
@@ -219,7 +252,7 @@ export const LogosSlider = () => {
   return (
     <Splide
       hasTrack={false}
-      className="h-full text-white flex items-center w-full "
+      className="h-full text-white flex border-t border-neutral-600 items-center w-full "
       extensions={{ AutoScroll }}
       options={{
         pagination: false,
@@ -252,6 +285,7 @@ export const LogosSlider = () => {
             <SplideSlide
               onMouseLeave={resetOpacity}
               onMouseEnter={() => reduceOpacity(eachLogo)}
+              className="cursor-pointer"
             >
               <div
                 style={{ transition: "all 0.2s" }}
