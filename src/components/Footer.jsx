@@ -66,7 +66,7 @@ export default function Footer(){
 
 
 
-    <div className="flex flex-wrap gap-y-8  justify-between  lg:flex-grow text-[#858585]">
+    <div className="flex flex-wrap gap-y-8 mt-10 lg:mt-0  justify-between  lg:flex-grow text-[#858585]">
 
 
 {footerLinks.map((eachOne)=>{
