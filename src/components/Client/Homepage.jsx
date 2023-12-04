@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { animate, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import localFont from 'next/font/local'
@@ -102,134 +102,57 @@ export const HeroSectText = () => {
 };
 
 const logos = [
-  {
-    image: "https://codesandbox.io/_next/static/media/react.b3050237.svg",
-    text: "React + Vite",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/next.8d6ae969.svg",
-    text: "Next.js",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/vue.7cf1740d.svg",
-    text: "Vue + Vite",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/angular.544aa66a.svg",
-    text: "Angular",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/nuxt.2905d295.svg",
-    text: "Nuxt",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/svelte.51c29d06.svg",
-    text: "SvelteKit",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/remix.8a00c717.svg",
-    text: "Remix",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/gatsby.3ae5d684.svg",
-    text: "Gatsby",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/astro.06d32f6d.svg",
-    text: "Astro Blog",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/next.8d6ae969.svg",
-    text: "Next.js Commerce",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/gatsby.3ae5d684.svg",
-    text: "Web Image Crawler",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/typescript.e2619b63.svg",
-    text: "React TypeScript",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/typescript.e2619b63.svg",
-    text: "TypeScript",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/deno.f40886cb.svg",
-    text: "Deno",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/astro.06d32f6d.svg",
-    text: "Astro Starter",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/react.b3050237.svg",
-    text: "React + Vite",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/next.8d6ae969.svg",
-    text: "Next.js",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/vue.7cf1740d.svg",
-    text: "Vue + Vite",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/angular.544aa66a.svg",
-    text: "Angular",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/nuxt.2905d295.svg",
-    text: "Nuxt",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/svelte.51c29d06.svg",
-    text: "SvelteKit",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/remix.8a00c717.svg",
-    text: "Remix",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/gatsby.3ae5d684.svg",
-    text: "Gatsby",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/astro.06d32f6d.svg",
-    text: "Astro Blog",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/next.8d6ae969.svg",
-    text: "Next.js Commerce",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/gatsby.3ae5d684.svg",
-    text: "Web Image Crawler",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/typescript.e2619b63.svg",
-    text: "React TypeScript",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/typescript.e2619b63.svg",
-    text: "TypeScript",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/deno.f40886cb.svg",
-    text: "Deno",
-  },
-  {
-    image: "https://codesandbox.io/_next/static/media/astro.06d32f6d.svg",
-    text: "Astro Starter",
-  },
-];
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falgolia.a8da3961.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmicrosoft.73a237e1.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fintel.8f37f35e.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fnvidia.cd0e3efe.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fatlassian.6951c1d4.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fuber.c72e37e8.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstripe.b63b30d6.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fzendesk.9554db3d.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fadobe.eb5d0979.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fshopify.a92c5be1.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falgolia.a8da3961.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmicrosoft.73a237e1.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fintel.8f37f35e.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fnvidia.cd0e3efe.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fatlassian.6951c1d4.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fuber.c72e37e8.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstripe.b63b30d6.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fzendesk.9554db3d.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fadobe.eb5d0979.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fshopify.a92c5be1.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falgolia.a8da3961.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmicrosoft.73a237e1.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fintel.8f37f35e.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fnvidia.cd0e3efe.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fatlassian.6951c1d4.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fuber.c72e37e8.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstripe.b63b30d6.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fzendesk.9554db3d.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fadobe.eb5d0979.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fshopify.a92c5be1.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falgolia.a8da3961.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmicrosoft.73a237e1.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fintel.8f37f35e.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fnvidia.cd0e3efe.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fatlassian.6951c1d4.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fuber.c72e37e8.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstripe.b63b30d6.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fzendesk.9554db3d.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fadobe.eb5d0979.png&w=640&q=75",
+  "https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fshopify.a92c5be1.png&w=640&q=75"
+]
 
 export const LogosSlider = () => {
   const reduceOpacity = (eachLogo) => {
     const allElements = document.querySelectorAll(".logoElement");
 
     allElements.forEach((elem, secondIndex) => {
-      elem.style.opacity = 0.6;
+      elem.style.opacity = 0.3;
+      
+      elem.style.scale = 1;
+      elem.style.zIndex = 10;
     });
 
     Array.from(allElements)
@@ -238,6 +161,8 @@ export const LogosSlider = () => {
       })
       .forEach((check) => {
         check.style.opacity = 1;
+        check.style.scale = 1.3;
+        check.style.zIndex = 20;
       });
   };
 
@@ -246,23 +171,29 @@ export const LogosSlider = () => {
 
     allElements.forEach((elem, secondIndex) => {
       elem.style.opacity = 1;
+      elem.style.scale = 1;
+        elem.style.zIndex = 10
     });
   };
 
   return (
     <Splide
       hasTrack={false}
-      className="h-full text-white flex border-t border-neutral-600 items-center w-full "
+      className=" text-white flex   border-t border-neutral-600 items-center w-full "
       extensions={{ AutoScroll }}
       options={{
         pagination: false,
         arrows: false,
         perPage: 2,
 
+
+        fixedWidth:214,
+        
+
         type: "loop",
 
         autoScroll: {
-          speed: 0.8,
+          speed: 0.6,
         },
 
         breakpoints: {
@@ -279,23 +210,23 @@ export const LogosSlider = () => {
         mediaQuery: "min",
       }}
     >
-      <SplideTrack className=" w-full">
+      <SplideTrack className="py-5 w-full bg-[#ffffff]">
         {logos.map((eachLogo, index) => {
           return (
             <SplideSlide
-              onMouseLeave={resetOpacity}
-              onMouseEnter={() => reduceOpacity(eachLogo)}
-              className="cursor-pointer"
+              // onMouseLeave={resetOpacity}
+              // onMouseEnter={() => reduceOpacity(eachLogo)}
+              className="cursor-pointer h-[104px] "
             >
+
               <div
                 style={{ transition: "all 0.2s" }}
-                className=" p-6 items-center  flex logoElement text-text1 gap-x-2 "
+                className=" items-center w-full h-[100px] flex logoElement text-text1 gap-x-2 "
               >
-                <div className="min-w-[32px] min-h-[32px] ">
-                  <img src={eachLogo.image} className="imageCommon" alt="" />
-                </div>
-
-                <p className="whitespace-nowrap">{eachLogo.text}</p>
+                  <img src={eachLogo} className="imageCommon " alt="" />
+               
+               
+                {/* <p className="whitespace-nowrap">{eachLogo.text}</p> */}
               </div>
             </SplideSlide>
           );
@@ -438,3 +369,61 @@ export const Reviews = () => {
     </div>
   );
 };
+
+const info = [
+
+  {from:0,heading:4,firsttext:'million+',text:'users',},
+  {from:0,heading:10000 ,firsttext:' +',text:'repositories connected',},
+  {from:0,heading:20000 ,firsttext:' +',text:'organizations',},
+  {from:0.1,heading:1,firsttext:'billion+',text:'lines of code written',},
+
+]
+
+function IncreaseNumbers({ from, to }) {
+  const nodeRef = useRef();
+
+  useEffect(() => {
+    const node = nodeRef.current;
+
+    const controls = animate(from, to, {
+      duration: 4,
+      onUpdate(value) {
+        
+        node.textContent = value.toFixed(0);
+      },
+    });
+
+    return () => controls.stop();
+  }, [from, to]);
+
+
+  return <span ref={nodeRef} />;
+}
+
+
+export const Info = ()=>{
+
+  
+
+  return <div className="px-4 text-text1 pb-20">
+
+
+  <div className="flex flex-col max-w-[1600px] mx-auto gap-y-8 sm:flex-row flex-wrap sm:gap-y-16 lg:justify-between">
+
+{info.map((eachOne)=>{
+  return <div className="first:border-0 lg:first:border-t-4 sm:w-1/2 lg:w-[calc(25%-25px)] border-t-4 border-[#252525] mt-6 lg:mt-12  pt-6 px-4 font-medium">
+
+    <p className="text-5xl xl:text-[56px] 1xl:text-[64px] flex"><IncreaseNumbers from={eachOne.from} to={eachOne.heading} /> <span>{eachOne.firsttext}</span> </p>
+
+<p className="text-[22px] font-normal mt-2">{eachOne.text}</p>
+
+
+
+  </div>
+})}
+
+
+</div>
+
+</div>
+}

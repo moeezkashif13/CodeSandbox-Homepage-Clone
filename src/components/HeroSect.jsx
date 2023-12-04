@@ -1,9 +1,16 @@
-import { HeroSectText, LogosSlider } from "./Client/Homepage";
+
+import { HeroSectText, Info, LogosSlider } from "./Client/Homepage";
+
 
 
 
 
 export default function HeroSect() {
+
+  
+
+
+
   //
   return (
     <div className="bg-neutral-700">
@@ -42,9 +49,14 @@ export default function HeroSect() {
       
     </div>
 
-<div className="  slider hideScrollbar overflow-scroll  h-[90px] ">
+<div className="  slider hideScrollbar overflow-scroll   ">
 <LogosSlider />
 </div>
+
+
+
+<Info/>
+
 
 </div>
 
